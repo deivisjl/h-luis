@@ -25,9 +25,9 @@ class VentasAsociadoController extends Controller
     					select * from detalle_venta
     					where Estado=1
     				");
-					$catalogo=DB::select("
-							select producto.idProducto,producto.Codigo,producto.Descripcion,producto.imagen,producto.Tipo,producto.Nombre_producto,producto.Descuento,producto.Precio_venta,producto.Stock,producto.Catalogo_idCatalogo from producto,catalogo where catalogo.Estado=1 and catalogo.idCatalogo=producto.Catalogo_idCatalogo and catalogo_idCatalogo=1 
-						");
+
+						$catalogo = ProductoModelo::all();
+
 
 		return view('view_ventas_asociado',compact('venta_asociado','catalogo'));
 		

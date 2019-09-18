@@ -22,6 +22,7 @@ public function __construct(){
     				");
 
 					$catalogo=DB::select("select * from catalogo where Estado=1");
+					
 
 		return view('view_producto',compact('producto','catalogo'));
 	}
@@ -53,7 +54,12 @@ public function __construct(){
 			$productoNuevo->Catalogo_idCatalogo=$request->Codigo_catalogo;			
 			//$productoNuevo->imagen=$request->file('foto');
 			$productoNuevo->Descripcion=$request->Descripcion;
-			$productoNuevo->imagen=$request->file('foto')->store('public');
+			if($request->hasFile('foto')){
+				$path = $request->foto->store('public');
+				$productoNuevo->imagen = $path;
+			}
+
+			//$productoNuevo->imagen=$request->file('foto')->store('public');
 			$productoNuevo->save();
 			return back()->with('mensaje','Producto guardado exitosamente');
 		}else{

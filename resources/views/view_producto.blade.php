@@ -109,7 +109,7 @@
                             <td>{{$row->Stock}}</td>
                             <td>{{$row->Catalogo_idCatalogo}}</td>
                             <td>{{$row->Descripcion}}</td>                            
-                            <td><img width="80%" src="/storage/{{substr($row->imagen,7)}}"></td>
+                            <td><img width="80%" src="{{ \Storage::url($row->imagen) }}"></td>
                             <td>
                               <a href="{{ route('producto.editar', $row->idProducto) }}" class="btn btn-warning btn-sm">Editar</a>
                               <a href="{{ route('producto.actualizar', $row->idProducto) }}" class="btn btn-warning btn-sm">Actualizar Stock</a>
